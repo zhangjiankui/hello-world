@@ -33,7 +33,7 @@ jobs:
       - name: test2
         run: echo "test2"; exit 1
 
-  testjob2:
+  testjob3:
     runs-on: ubuntu-latest
     steps:
       - name: Check context
@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
       - name: test1
         run: /bin/bash ./test.sh ${{ github.ref_name }} ${{github.run_id}} ${{ github.run_number }} ;
-        
+
   testjob98:
     if: success()
     runs-on: ubuntu-latest
