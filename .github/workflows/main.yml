@@ -5,7 +5,6 @@ on:
 jobs: 
   testjob:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check context
         run: echo ${{ github.context }}
@@ -21,3 +20,21 @@ jobs:
       - name: post action failed
         if: failure()
         run: echo "post action ffff"
+  testjob2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check context
+        run: echo ${{ github.context }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: test1
+        run: /bin/bash ./test.sh ${{ github.ref_name }} ${{github.run_id}} ${{ github.run_number }} ;
+      - name: test2
+        run: echo "test2"; exit 1
+  testjob3:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: TTTTTT
+        run: echo ">>>>>>>>________<<<<<<<<<<<"
+    
