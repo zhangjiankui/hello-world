@@ -15,6 +15,9 @@ jobs:
         run: echo "test1"; exit 1
       - name: test2
         run: echo "test2"
-      - name: post action
-        if: always()
-        run: echo "post action"
+      - name: post action success
+        if: success()
+        run: echo "post action sss"
+      - name: post action failed
+        if: failure()
+        run: echo "post action ffff"
