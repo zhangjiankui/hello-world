@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: test1
-        run: /bin/bash ./test.sh;
+        run: /bin/bash ./test.sh ${{ github.ref_name }} ${{github.run_id}} ${{ github.run_number }} ;
       - name: test2
         run: echo "test2"
       - name: post action success
