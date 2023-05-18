@@ -16,10 +16,14 @@ jobs:
         run: echo "test2"
       - name: post action success
         if: success()
-        run: echo "post action sss"
+        run: |
+          echo "post action sss";
+          /bin/bash ./devops/scripts/build_notify.sh success ${{ github.ref_name }} ${{ github.run_number }} ;
       - name: post action failed
         if: failure()
-        run: echo "post action ffff"
+        run: |
+          echo "post action ffff";
+          /bin/bash ./devops/scripts/build_notify.sh failed ${{ github.ref_name }} ${{ github.run_number }} ;
 
   testjob2:
     runs-on: ubuntu-latest
